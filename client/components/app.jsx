@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import ProductListItem from './ProductListItem';
+import ProductList from './product-list';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ export default class App extends React.Component {
       method: 'GET'
     })
       .then(response => response.json())
-      .then(json => console.log('json :', json))
+      .then(json => console.log('json :', this.state.products))
       .catch(error => console.log('error: ', error));
   }
   componentDidMount() {
@@ -22,7 +22,10 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <Header />
+      <React.Fragment>
+        <Header />
+        <ProductList products={this.state.products}/>
+      </React.Fragment>
     );
   }
 }
