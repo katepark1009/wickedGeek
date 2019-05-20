@@ -16,6 +16,9 @@ export default class App extends React.Component {
       .then(json => console.log('json :', json))
       .catch(error => console.log('error: ', error));
   }
+  componentDidMount() {
+    this.getProducts();
+  }
   render() {
     return (
       <Header />
