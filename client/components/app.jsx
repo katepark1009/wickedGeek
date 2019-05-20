@@ -15,7 +15,6 @@ export default class App extends React.Component {
     })
       .then(response => response.json())
       .then(json => this.setState({ products: json }));
-    // .catch(error => console.log('error: ', error));
   }
   componentDidMount() {
     this.getProducts();
