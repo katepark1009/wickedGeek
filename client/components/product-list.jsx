@@ -2,15 +2,16 @@ import React from 'react';
 import ProductListItem from './product-list-item';
 
 export default function ProductList(props) {
-  const cards = this.props.products.map(product => {
+  const cards = props.products.map(product => {
     return <ProductListItem key={product.id}
       id = {product.id}
-      name = {product.price}
+      name = {product.name}
+      price = {product.price}
       image = {product.image}
       description = {product.shortDescription} />;
   });
   return (
-    <div className= "productList__container">
+    <div className= "productList__container row">
       {cards}
     </div>
   );

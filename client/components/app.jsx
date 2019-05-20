@@ -14,8 +14,8 @@ export default class App extends React.Component {
       method: 'GET'
     })
       .then(response => response.json())
-      .then(json => console.log('json :', this.state.products))
-      .catch(error => console.log('error: ', error));
+      .then(json => this.setState({ products: json }));
+    // .catch(error => console.log('error: ', error));
   }
   componentDidMount() {
     this.getProducts();
@@ -24,7 +24,7 @@ export default class App extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        <ProductList products={this.state.products}/>
+        {this.state.products ? <ProductList products={this.state.products}/> : 'loading' }
       </React.Fragment>
     );
   }
