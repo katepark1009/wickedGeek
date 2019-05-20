@@ -6,10 +6,20 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'catalog',
-      params: {},
+      view: {
+        name: 'catalog',
+        params: {}
+      },
       products: []
     };
+  }
+  setView(name, params) {
+    if (this.state.products) {
+      let view = { ...this.state.view };
+      view.name = name;
+      view.params = params;
+      this.setState({ view }, () => {console.log('working');});
+    }
   }
   getProducts() {
     fetch('/api/products.php', {
@@ -25,7 +35,7 @@ export default class App extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        {this.state.products ? <ProductList products={this.state.products}/> : 'loading' }
+        {this.state.products ? <ProductList setView={this.setView} products={this.state.products}/> : 'loading' }
       </React.Fragment>
     );
   }

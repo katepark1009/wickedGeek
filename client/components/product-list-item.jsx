@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductDetails from './product-details';
 
 export default function ProductListItem(props) {
   return (
@@ -11,6 +12,7 @@ export default function ProductListItem(props) {
         <p className="product__price card-subtitle">{'$ ' + props.price}</p>
         <p className="product__description card-text">{props.description}</p>
       </div>
+      <ProductDetails id={props.id} />
     </div>
   );
 }
