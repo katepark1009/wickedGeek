@@ -1,5 +1,4 @@
 import React from 'react';
-// import ProductDetails from './product-details';
 
 export default function ProductListItem(props) {
   return (
