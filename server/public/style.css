@@ -2,11 +2,6 @@
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Assistant|Hind+Madurai&display=swap');
 
-body {
-    background-image: url("");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
 .product__container{
     width : 18rem;
     border : 1px solid gray;
@@ -19,10 +14,20 @@ body {
     margin: 0;
     padding: 0;
 }
+.header__container{
+    position: relative;
+}
 .header__title {
     text-align: center;
     font-family: 'Russo One', sans-serif;
     color: #410586;
+}
+.header__cartItem {
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+    font-family: 'Bree Serif', serif;
+    font-size: 1.1rem;
 }
 .product__price, .product__detail__price {
     font-family: 'Russo One', sans-serif;
@@ -30,11 +35,17 @@ body {
 .productList__container {
     justify-content: center;
 }
+.product__detail {
+    position: relative;
+}
 .product__detail__image{
     width:100%;
 }
 .product__detail__card {
     justify-content: center;
+}
+.product__btn {
+    position: relative;
 }
 .product__detail__all__info {
     line-height: 1.8;

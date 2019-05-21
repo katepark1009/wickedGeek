@@ -11,7 +11,7 @@ export default function ProductListItem(props) {
         <h3 className="product__name card-title">{props.name}</h3>
         <h5 className="product__price card-subtitle text-muted">{'$ ' + (props.price / 100).toFixed(2) }</h5>
         <p className="product__description card-text">{props.description}</p>
-        <div className="btn btn-outline-info"><i className="far fa-plus-square"></i> More Detail</div>
+        <div className="product__btn btn btn-outline-info"><i className="far fa-plus-square"></i> More Detail</div>
       </div>
     </div>
   );
