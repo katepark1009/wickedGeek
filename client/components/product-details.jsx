@@ -16,6 +16,7 @@ export default class ProductDetails extends React.Component {
       .then(json => this.setState({ product: json }));
   }
   render() {
+    let product = this.state.product;
     return (
       <div className="product__detail__container mt-3">
         <div className="back btn btn-outline-secondary ml-3" onClick={() => this.props.setView('catalog', {})}><i className="far fa-arrow-alt-circle-left"></i> Back to catalog</div>
@@ -27,7 +28,7 @@ export default class ProductDetails extends React.Component {
             <div className="product__detail__title"><h2>{this.state.product ? this.state.product.name : ''}</h2></div>
             <div className="product__detail__price text-muted"><h4>{this.state.product ? '$ ' + (this.state.product.price / 100).toFixed(2) : ''}</h4></div>
             <div className="product__detail__description"><h5>{this.state.product ? this.state.product.shortDescription : ''}</h5></div>
-            <div className="btn btn-warning"><i className="far fa-plus-square" onClick={() => this.props.cart(this.state.product)}></i> Add to Cart</div>
+            <button className="product__detail__btn btn btn-warning" onClick={() => this.props.cart(product)}><i className="far fa-plus-square"></i> Add to Cart</button>
           </div>
         </div>
         <div className="product__detail__all__info card bg-light mx-3 mt-3 px-3 py-3"><i className="fas fa-search-plus"></i>{this.state.product ? this.state.product.longDescription : ''}</div>
