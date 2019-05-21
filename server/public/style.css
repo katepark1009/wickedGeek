@@ -1,12 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Assistant|Hind+Madurai&display=swap');
 
+body {
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
 .product__container{
     width : 18rem;
     border : 1px solid gray;
     padding: 0;
 }
 .product__image{
-    height: 13rem;
+    height: 15rem;
 }
 .product__image__container{
     margin: 0;
@@ -15,7 +22,30 @@
 .header__title {
     text-align: center;
     font-family: 'Russo One', sans-serif;
+    color: #410586;
+}
+.product__price, .product__detail__price {
+    font-family: 'Russo One', sans-serif;
 }
 .productList__container {
     justify-content: center;
+}
+.product__detail__image{
+    width:100%;
+}
+.product__detail__card {
+    justify-content: center;
+}
+.product__detail__all__info {
+    line-height: 1.8;
+    font-family: 'Hind Madurai', sans-serif;
+}
+.product__detail__info {
+    font-family: 'Bree Serif', serif;
+}
+.product__description{
+    font-family: 'Hind Madurai', sans-serif;
+}
+.product__name {
+    font-family: 'Bree Serif', serif;
 }
