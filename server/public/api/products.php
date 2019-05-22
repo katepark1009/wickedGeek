@@ -21,6 +21,12 @@
   if (!$result) {
     throw new Exception("Errormessage: " .mysqli_error($conn));
   };
+  if(!empty($_GET['id'])) {
+    if(mysqli_num_rows($result) < 1 ){
+      $id = $_GET['id'];
+      throw new Exception("Errormessage: invalid ID: {$id}");
+    };
+  };
 
   $output = [];
 
