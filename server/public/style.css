@@ -7,12 +7,29 @@
     border : 1px solid gray;
     padding: 0;
 }
+.cart__summary__container {
+    border : 1px solid gray;
+    border-radius: 9px;
+}
+.cart__summary__image__container{
+    padding: 0;
+}
+.cartsummarty__title{
+    font-family: 'Bree Serif', serif;
+}
+.cartsummarty__total{
+    font-family: 'Bree Serif', serif;
+}
+.cart__summary__image{
+    height: 13rem;
+}
 .product__image{
     height: 18rem;
 }
 .product__image__container{
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 .header__container{
     position: relative;
@@ -38,8 +55,8 @@
     font-family: 'Russo One', sans-serif;
 }
 .productList__container {
-    justify-content: center;
     margin-left: 0;
+    justify-content: center;
 }
 .product__detail {
     position: relative;
