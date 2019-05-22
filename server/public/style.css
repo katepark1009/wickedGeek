@@ -16,11 +16,12 @@
 }
 .header__container{
     position: relative;
+    background-color: #410586
 }
 .header__title {
     text-align: center;
     font-family: 'Russo One', sans-serif;
-    color: #410586;
+    color: white;
 }
 .header__cartItem {
     position: absolute;
