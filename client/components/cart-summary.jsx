@@ -22,7 +22,9 @@ export default function CartSummary(props) {
       </div>
       <div className="row">
         <div className="cartsummarty__total mt-4 pl-8 col-8"><h4 className="offset-sm-1">Item Total : {sum.toFixed(2)}</h4></div>
-        <div className="btn btn-outline-secondary ml-3 col-2" onClick={() => props.setView('checkout', {})}>Checkout</div>
+        {cartItems.length > 0
+          ? <div className="btn btn-outline-secondary ml-3 col-2" onClick={() => props.setView('checkout', {})}>Checkout</div>
+          : '' }
       </div>
     </div>
   );
