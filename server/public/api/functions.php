@@ -5,5 +5,9 @@
      http_response_code(500);
      print ($json_output);
    };
+   function startup() {
+     header('Content-Type: application/json');
+   };
+   startup();
    set_exception_handler("error_handler");
 ?> 
