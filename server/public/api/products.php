@@ -4,8 +4,14 @@
   set_exception_handler("error_handler");
   if(!$conn) {
       throw new Exception("Connection error: " . mysqli_connect_error());
-    };
-  $query = 'SELECT * FROM products_list WHERE 1';
+  };
+  if(empty($_GET['id'])) {
+    $whereClause = '';
+  } else {
+    $id = $_GET['id'];
+    $whereClause = "WHERE id={$id}";
+  };
+  $query = "SELECT * FROM products_list " . $whereClause;
   $result = mysqli_query($conn, $query);
   
   if (!$result) {
