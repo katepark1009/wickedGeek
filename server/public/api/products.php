@@ -9,17 +9,17 @@
   $result = mysqli_query($conn, $query);
   
   if (!$result) {
-    print ("Errormessage: " . mysqli_error($conn));
+    throw new Exception("Errormessage: " .mysqli_error($conn));
   };
 
-  $output = array("success" => true, "data" => [] );
+  $output = [];
   if( mysqli_num_rows($result) === 0 ) {
     print ("no data available");
     exit();
   };
     
   while ($row = mysqli_fetch_assoc($result)) {
-    array_push($output['data'], $row);
+    array_push($output, $row);
   };
   $json_output = json_encode($output);
   print ($json_output);
