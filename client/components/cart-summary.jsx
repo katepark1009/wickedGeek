@@ -3,6 +3,7 @@ import CartSummaryItem from './cart-summary-item';
 
 export default function CartSummary(props) {
   let sum = props.cart.reduce((a, b) => ({ price: a.price + b.price }));
+  sum = sum.price / 100;
   let cartItems = props.cart.map(item => {
     return <CartSummaryItem id={item.id}
       key = {item.id}
@@ -12,7 +13,6 @@ export default function CartSummary(props) {
       description = {item.shortDescription}
     />;
   });
-  sum = sum.price / 100;
   return (
     <div className="cartsummarty__container mb-3">
       <div className="back btn btn-outline-secondary ml-3" onClick={() => props.setView('catalog', {})}><i className="far fa-arrow-alt-circle-left"></i> Back to catalog</div>
