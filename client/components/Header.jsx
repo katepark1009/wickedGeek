@@ -1,5 +1,5 @@
 import React from 'react';
-import Fab from '@material-ui/core/Fab';
+import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
@@ -13,27 +13,28 @@ const styles = theme => ({
   root: {
     flexGrow: 1
   },
-  paper: {
-    padding: theme.spacing.unit * 2,
-    textAlign: 'center',
-    color: theme.palette.text.secondary
+  button: {
+    padding: theme.spacing.unit * 1.5,
+    margin: theme.spacing.unit * 2
   }
 });
 
 function Header(props) {
   const { classes } = props;
   return (
-    <div className={classes.root}>
-      <Grid container spacing={8}>
-        <Grid item xs={10}>
-          <h1 className="header__title my-4"><i className="fas fa-hat-wizard"></i>Wicked Sales</h1>
+    <div>
+      <div className={classes.root}>
+        <Grid container spacing={8}>
+          <Grid item md={10} sm={9}>
+            <h1 className="header__title my-4"><i className="fas fa-hat-wizard"></i>Wicked Sales</h1>
+          </Grid>
+          <Grid item md={2} sm={3} alignItems="flex-end">
+            <Button onClick={() => props.click('cart', {})} variant="outlined" className={classes.button} >
+              {props.cart.length} items<i className="fas fa-shopping-cart"></i>
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item xs={2}>
-          <Fab variant="extended" aria-label="Add" className={classes.fab}>
-            {props.cart.length} items<i className="fas fa-shopping-cart"></i>
-          </Fab>
-        </Grid>
-      </Grid>
+      </div>
     </div>
   );
 }
