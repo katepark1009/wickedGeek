@@ -1,16 +1,26 @@
 import React from 'react';
+import CartSummaryItem from './cart-summary-item';
 
-export default function CartSummaryItem(props) {
+export default function CartSummary(props) {
+  let sum = props.cart.reduce((a, b) => ({ price: a.price + b.price }));
+  sum = sum.price / 100;
+  let cartItems = props.cart.map(item => {
+    return <CartSummaryItem id={item.id}
+      key = {item.id}
+      name = {item.name}
+      price = {item.price}
+      image = {item.image}
+      description = {item.shortDescription}
+    />;
+  });
   return (
-    <div className="cart__summary__container">
-      <div className="cart__summary__image__container card-header">
-        <img src={props.image} className="cart__summary__image card-img-top" alt={props.name} />
+    <div className="cartsummarty__container mb-3">
+      <div className="back btn btn-outline-secondary ml-3" onClick={() => props.setView('catalog', {})}><i className="far fa-arrow-alt-circle-left"></i> Back to catalog</div>
+      <div className="cartsummarty__title mt-4 pl-8"><h3 className="offset-sm-1">My Cart</h3></div>
+      <div className="cartsummarty__detail">
+        {cartItems}
       </div>
-      <div className="cart__summary__detail card-body">
-        <h3 className="cart__summary__name card-title">{props.name}</h3>
-        <h5 className="cart__summary__price card-subtitle text-muted">{'$ ' + (props.price / 100).toFixed(2) }</h5>
-        <p className="cart__summary__description card-text">{props.description}</p>
-      </div>
+      <div className="cartsummarty__total mt-4 pl-8"><h4 className="offset-sm-1">Item Total : {sum.toFixed(2)}</h4></div>
     </div>
   );
 }

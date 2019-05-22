@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
+import CartSummary from './cart-summary';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -45,7 +46,6 @@ export default class App extends React.Component {
       id: params
     };
     this.setState({ view });
-
   }
   getProducts() {
     fetch('/api/products.php', {
@@ -59,12 +59,18 @@ export default class App extends React.Component {
     this.getCartItem();
   }
   render() {
+    let render = null;
+    if (this.state.view === [] || this.state.view.name === 'catalog') {
+      render = <ProductList view={this.state.view} setView={this.setView} products={this.state.products}/>;
+    } else if (this.state.view.name === 'detail') {
+      render = <ProductDetails view={this.state.view} setView={this.setView} id={this.state.view.params.id} cart={this.addToCart} />;
+    } else if (this.state.view.name === 'cart') {
+      render = <CartSummary cart={this.state.cart} setView={this.setView}/>;
+    }
     return (
       <React.Fragment>
-        <Header cartItem={this.getCartItem} cart={this.state.cart}/>
-        {this.state.view.name === 'catalog'
-          ? <ProductList view={this.state.view} setView={this.setView} products={this.state.products}/>
-          : <ProductDetails view={this.state.view} setView={this.setView} id={this.state.view.params.id} cart={this.addToCart} />}
+        <Header cartItem={this.getCartItem} cart={this.state.cart} click={this.setView}/>
+        {render}
       </React.Fragment>
     );
   }
