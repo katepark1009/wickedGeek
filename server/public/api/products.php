@@ -9,7 +9,11 @@
     $whereClause = '';
   } else {
     $id = $_GET['id'];
-    $whereClause = "WHERE id={$id}";
+    if(is_numeric($id)){
+      $whereClause = "WHERE id={$id}";
+    } else {
+      throw new Exception("Errormessage: 'id' needs to be a number");
+    };
   };
   $query = "SELECT * FROM products_list " . $whereClause;
   $result = mysqli_query($conn, $query);
