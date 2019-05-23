@@ -7,33 +7,54 @@
     border : 1px solid gray;
     padding: 0;
 }
+.cart__summary__container {
+    border : 1px solid gray;
+    border-radius: 9px;
+}
+.cart__summary__image__container{
+    padding: 0;
+}
+.cartsummarty__title{
+    font-family: 'Bree Serif', serif;
+}
+.cartsummarty__total{
+    font-family: 'Bree Serif', serif;
+}
+.cart__summary__image{
+    height: 13rem;
+}
 .product__image{
     height: 18rem;
 }
 .product__image__container{
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 .header__container{
     position: relative;
+    background-color: #410586;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://data.whicdn.com/images/277722125/original.gif");
 }
 .header__title {
     text-align: center;
     font-family: 'Russo One', sans-serif;
-    color: #410586;
+    color: white;
 }
 .header__cartItem {
-    position: absolute;
-    top: 2rem;
-    right: 1rem;
+    color: white;
+    text-align: center;
     font-family: 'Bree Serif', serif;
-    font-size: 1.1rem;
+}
+.header__cartItem p{
+    font-size: 1.2rem;
 }
 .product__price, .product__detail__price {
     font-family: 'Russo One', sans-serif;
 }
 .productList__container {
-    justify-content: center;
     margin-left: 0;
 }
 .product__detail {

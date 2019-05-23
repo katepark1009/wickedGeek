@@ -24,12 +24,12 @@ function Header(props) {
   return (
     <div>
       <div className={classes.root}>
-        <Grid container spacing={8}>
+        <Grid container spacing={8} className="header__container">
           <Grid item md={10} sm={9}>
             <h1 className="header__title my-4"><i className="fas fa-hat-wizard"></i>Wicked Sales</h1>
           </Grid>
           <Grid item md={2} sm={3} alignItems="flex-end">
-            <Button onClick={() => props.click('cart', {})} variant="outlined" className={classes.button} >
+            <Button onClick={() => props.click('cart', {})} variant="contained" color="secondary" className={classes.button} >
               {props.cart.length} items<i className="fas fa-shopping-cart"></i>
             </Button>
           </Grid>
