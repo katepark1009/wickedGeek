@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function ProductListItem(props) {
   return (
-    <div className = "product__container shadow card bg-light col-sm-4 col-md-3 col-lg-2 col-md-3 ml-4 mr-4 mb-5" onClick={() => props.setView('detail', props.id)}>
+    <div className = "product__container shadow card bg-light col-sm-4 col-lg-2 col-md-3 ml-4 mr-4 mb-5" onClick={() => props.setView('detail', props.id)}>
       <div className="product__image__container card-header">
         <img src={props.image} className="product__image card-img-top" alt={props.name} />
       </div>

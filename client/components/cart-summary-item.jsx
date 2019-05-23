@@ -8,7 +8,7 @@ export default function CartSummaryItem(props) {
       </div>
       <div className="cart__summary__detail card-body col-sm-9">
         <h3 className="cart__summary__name card-title">{props.name}</h3>
-        <h5 className="cart__summary__price card-subtitle text-muted">{'$ ' + (props.price / 100).toFixed(2) }</h5>
+        <h5 className="cart__summary__price card-subtitle text-muted">{'$ ' + (parseInt(props.price) / 100).toFixed(2) }</h5>
         <p className="cart__summary__description card-text">{props.description}</p>
       </div>
     </div>

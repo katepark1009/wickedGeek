@@ -56,7 +56,6 @@
 }
 .productList__container {
     margin-left: 0;
-    justify-content: center;
 }
 .product__detail {
     position: relative;
