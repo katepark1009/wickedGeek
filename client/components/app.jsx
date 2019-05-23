@@ -90,9 +90,9 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'detail') {
       render = <ProductDetails view={this.state.view} setView={this.setView} id={this.state.view.params.id} cart={this.addToCart} open={this.state.openSnackBar} close={this.closeSnackbar}/>;
     } else if (this.state.view.name === 'cart') {
-      render = <CartSummary cart={this.state.cart} setView={this.setView} />;
+      render = <CartSummary cart={this.state.cart} setView={this.setView} close={this.closeSnackbar}/>;
     } else if (this.state.view.name === 'checkout') {
-      render = <CheckoutForm cart={this.state.cart} setView={this.setView} placeOrder={this.placeOrder} total={this.state.sum}/>;
+      render = <CheckoutForm cart={this.state.cart} setView={this.setView} placeOrder={this.placeOrder} total={this.state.sum} />;
     }
     return (
       <React.Fragment>

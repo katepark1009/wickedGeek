@@ -5,6 +5,13 @@
 body {
     overflow-x: hidden;
 }
+.cart__btn{
+    z-index: 1000;
+}
+.checkout__container {
+    align-item: center;
+}
+/* before using material */
 .product__container{
     width : 18rem;
     border : 1px solid gray;
@@ -17,6 +24,7 @@ body {
 .cart__summary__image__container{
     padding: 0;
 }
+
 .cartsummarty__title{
     font-family: 'Bree Serif', serif;
 }

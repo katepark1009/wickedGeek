@@ -1,7 +1,16 @@
 import React from 'react';
 import ProductListItem from './product-list-item';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
-export default function ProductList(props) {
+const styles = theme => ({
+  root: {
+    flexGrow: 1
+  }
+});
+
+function ProductList(props) {
+  const { classes } = props;
   const cards = props.products.map(product => {
     return <ProductListItem key={product.id}
       id = {product.id}
@@ -13,7 +22,13 @@ export default function ProductList(props) {
   });
   return (
     <div className= "productList__container row">
-      {cards}
+      <div className={classes.root}>
+        <Grid container justify="center" spacing={24}>
+          {cards}
+        </Grid>
+      </div>
     </div>
   );
 }
+
+export default withStyles(styles)(ProductList);

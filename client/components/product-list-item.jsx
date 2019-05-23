@@ -1,9 +1,25 @@
 import React from 'react';
-// import ProductDetails from './product-details';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 
-export default function ProductListItem(props) {
+const styles = theme => ({
+  root: {
+    spacing: 8,
+    margin: theme.spacing.unit * 2
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    height: '100%',
+    color: theme.palette.text.secondary
+  }
+});
+
+function ProductListItem(props) {
+  const { classes } = props;
   return (
-    <div className = "product__container shadow card bg-light col-sm-4 col-lg-2 col-md-3 ml-4 mr-4 mb-5" onClick={() => props.setView('detail', props.id)}>
+    <div m={4} className={classes.root} >
+    <Grid className={classes.paper} container direction="row" justify="space-around" spacing={16}>
+    <Grid item xs className = "product__container shadow card bg-light " onClick={() => props.setView('detail', props.id)}>
       <div className="product__image__container card-header">
         <img src={props.image} className="product__image card-img-top" alt={props.name} />
       </div>
@@ -13,6 +29,10 @@ export default function ProductListItem(props) {
         <p className="product__description card-text">{props.description}</p>
         <div className="product__btn btn btn-outline-info"><i className="far fa-plus-square"></i> More Detail</div>
       </div>
+    </Grid>
+    </Grid>
     </div>
   );
 }
+
+export default withStyles(styles)(ProductListItem);

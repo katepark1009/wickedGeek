@@ -26,7 +26,7 @@ export default function CartSummary(props) {
       </div>
       <div className="row">
         <div className="cartsummarty__total mt-4 pl-8 col-8"><h4 className="offset-sm-1">Item Total : {sum ? sum.toFixed(2) : '$0.00'}</h4></div>
-        {cartItems ? <div className="btn btn-outline-secondary ml-3 col-2" onClick={() => props.setView('checkout', {})}>Checkout</div>
+        {cartItems ? <div className="btn btn-outline-secondary ml-3 col-2" onClick={() => {props.setView('checkout', {}); props.close(); }}>Checkout</div> //!여기 클릭핸들러...
           : <h3 className="cart__empty text-muted"> Your cart is empty! </h3> }
       </div>
     </div>

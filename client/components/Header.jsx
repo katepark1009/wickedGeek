@@ -17,9 +17,9 @@ const styles = theme => ({
 function Header(props) {
   const buttonStyle = {
     margin: 0,
-    bottom: 'auto',
-    right: 20,
-    top: 20,
+    top: 'auto',
+    right: 50,
+    bottom: 60,
     left: 'auto',
     position: 'fixed'
   };
@@ -33,7 +33,7 @@ function Header(props) {
         <Grid container m={0} className="header__container">
           <Grid item md={12} sm={12}>
             <h1 className="header__title my-4"><i className="fas fa-hat-wizard"></i>Wicked Sales</h1>
-            <Fab onClick={() => props.click('cart', {})} variant="extended" className={classes.extendedIcon} style={buttonStyle}>
+            <Fab color="secondary" onClick={() => props.click('cart', {})} variant="extended" className={`${classes.extendedIcon} cart__btn`} style={buttonStyle}>
               {props.cart.length} items<i className="fas fa-shopping-cart"></i>
             </Fab>
           </Grid>

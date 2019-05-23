@@ -34,6 +34,7 @@ class ProductDetails extends React.Component {
   }
   handleClose(event, reason) {
     if (reason === 'clickaway') {
+      // eslint-disable-next-line no-useless-return
       return;
     }
   }
@@ -46,7 +47,7 @@ class ProductDetails extends React.Component {
     }
     return (
       <div className="product__detail__container mt-3">
-        <div className="back btn btn-outline-secondary ml-3" onClick={() => this.props.setView('catalog', {})}><i className="far fa-arrow-alt-circle-left"></i> Back to catalog</div>
+        <div className="back btn btn-outline-secondary ml-3" onClick={() => { this.props.setView('catalog', {}); this.props.close(); } }><i className="far fa-arrow-alt-circle-left"></i> Back to catalog</div>
         <div className="product__detail__card row mt-3 px-3">
           <div className="product__detail__image__container col-sm-2">
             <img className="product__detail__image card-img-top" src={this.state.product ? product.image : ''} alt={this.state.product ? product.name : ''}/>
@@ -71,7 +72,7 @@ class ProductDetails extends React.Component {
           ContentProps={{
             'aria-describedby': 'message-id'
           }}
-          message={<span id="message-id">This item was added to your shopping bag</span>}
+          message={<span id="message-id">✨ This item was added to your cart ✨</span>}
           action={[
             <IconButton
               key="close"
