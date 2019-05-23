@@ -1,37 +1,41 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Fab from '@material-ui/core/Fab';
 
 const styles = theme => ({
-  fab: {
-    margin: theme.spacing.unit
+  root: {
+    flexGrow: 1,
+    marginBottom: theme.spacing.unit
   },
   extendedIcon: {
     marginRight: theme.spacing.unit
-  },
-  root: {
-    flexGrow: 1
-  },
-  button: {
-    padding: theme.spacing.unit * 1.5,
-    margin: theme.spacing.unit * 2
   }
 });
 
 function Header(props) {
+  const buttonStyle = {
+    margin: 0,
+    bottom: 'auto',
+    right: 20,
+    top: 20,
+    left: 'auto',
+    position: 'fixed'
+  };
+  const rootStyle = {
+    width: '100vw'
+  };
   const { classes } = props;
   return (
     <div>
-      <div className={classes.root}>
-        <Grid container spacing={8} className="header__container">
-          <Grid item md={10} sm={9}>
+      <div className={classes.root} style={rootStyle}>
+        <Grid container m={0} className="header__container">
+          <Grid item md={12} sm={12}>
             <h1 className="header__title my-4"><i className="fas fa-hat-wizard"></i>Wicked Sales</h1>
-          </Grid>
-          <Grid item md={2} sm={3} alignItems="flex-end">
-            <Button onClick={() => props.click('cart', {})} variant="contained" color="secondary" className={classes.button} >
+            <Fab onClick={() => props.click('cart', {})} variant="extended" className={classes.extendedIcon} style={buttonStyle}>
               {props.cart.length} items<i className="fas fa-shopping-cart"></i>
-            </Button>
+            </Fab>
           </Grid>
         </Grid>
       </div>

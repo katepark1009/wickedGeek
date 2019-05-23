@@ -1,11 +1,28 @@
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import green from '@material-ui/core/colors/green';
 
-export default class ProductDetails extends React.Component {
+const styles = theme => ({
+  close: {
+    padding: theme.spacing.unit / 2
+  },
+  info: {
+    backgroundColor: theme.palette.primary.dark
+  },
+  success: {
+    backgroundColor: green[600]
+  }
+});
+class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       product: null
     };
+    this.handleClose = this.handleClose(this);
   }
   componentDidMount() {
     const id = this.props.id;
@@ -15,7 +32,13 @@ export default class ProductDetails extends React.Component {
       .then(response => response.json())
       .then(json => this.setState({ product: json }));
   }
+  handleClose(event, reason) {
+    if (reason === 'clickaway') {
+      return;
+    }
+  }
   render() {
+    const { classes } = this.props;
     let product;
     if (this.state.product) {
       product = this.state.product;
@@ -36,7 +59,33 @@ export default class ProductDetails extends React.Component {
           </div>
         </div>
         <div className="product__detail__all__info card bg-light mx-3 mt-3 px-3 py-3"><i className="fas fa-search-plus"></i>{this.state.product ? product.longDescription : ''}</div>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left'
+          }}
+          variant="info"
+          open={this.props.open}
+          autoHideDuration={6000}
+          onClose={this.handleClose}
+          ContentProps={{
+            'aria-describedby': 'message-id'
+          }}
+          message={<span id="message-id">This item was added to your shopping bag</span>}
+          action={[
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="inherit"
+              className={classes.close}
+              onClick={() => this.props.close()}>
+              <CloseIcon />
+            </IconButton>
+          ]}
+        />
       </div>
     );
   }
 }
+
+export default withStyles(styles)(ProductDetails);

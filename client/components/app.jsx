@@ -15,12 +15,14 @@ export default class App extends React.Component {
       },
       products: [],
       cart: [],
-      sum: 0
+      sum: 0,
+      openSnackBar: false
     };
     this.setView = this.setView.bind(this);
     this.getCartItem = this.getCartItem.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.closeSnackbar = this.closeSnackbar.bind(this);
   }
   placeOrder(order) {
     let cart = [ ...this.state.cart ];
@@ -57,6 +59,7 @@ export default class App extends React.Component {
     })
       .then(response => response.json())
       .then(json => this.setState({ cart: json }));
+    this.setState({ openSnackBar: true });
   }
   setView(name, params) {
     let view = { ...this.state.view };
@@ -77,12 +80,15 @@ export default class App extends React.Component {
     this.getProducts();
     this.getCartItem();
   }
+  closeSnackbar() {
+    this.setState({ openSnackBar: false });
+  }
   render() {
     let render = null;
     if (this.state.view === [] || this.state.view.name === 'catalog') {
       render = <ProductList view={this.state.view} setView={this.setView} products={this.state.products}/>;
     } else if (this.state.view.name === 'detail') {
-      render = <ProductDetails view={this.state.view} setView={this.setView} id={this.state.view.params.id} cart={this.addToCart} />;
+      render = <ProductDetails view={this.state.view} setView={this.setView} id={this.state.view.params.id} cart={this.addToCart} open={this.state.openSnackBar} close={this.closeSnackbar}/>;
     } else if (this.state.view.name === 'cart') {
       render = <CartSummary cart={this.state.cart} setView={this.setView} />;
     } else if (this.state.view.name === 'checkout') {

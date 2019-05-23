@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Assistant|Hind+Madurai&display=swap');
 
+body {
+    overflow-x: hidden;
+}
 .product__container{
     width : 18rem;
     border : 1px solid gray;
