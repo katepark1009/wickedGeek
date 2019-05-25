@@ -5,7 +5,11 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'row',
+    width: '98%',
+    margin: 'auto'
   }
 });
 
@@ -18,12 +22,14 @@ function ProductList(props) {
       price = {product.price}
       image = {product.image}
       description = {product.shortDescription}
-      setView ={props.setView} />;
+      setView ={props.setView}
+      addToCart = {props.cart}
+    />;
   });
   return (
-    <div className= "productList__container row">
-      <div className={classes.root}>
-        <Grid container justify="center" spacing={24}>
+    <div className= "productList__container">
+      <div>
+        <Grid container className={classes.root} spacing={24} justify="center">
           {cards}
         </Grid>
       </div>

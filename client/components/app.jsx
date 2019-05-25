@@ -16,13 +16,15 @@ export default class App extends React.Component {
       products: [],
       cart: [],
       sum: 0,
-      openSnackBar: false
+      openSnackBar: false,
+      openDrawer: false
     };
     this.setView = this.setView.bind(this);
     this.getCartItem = this.getCartItem.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.closeSnackbar = this.closeSnackbar.bind(this);
+    this.toggleDrawer = this.toggleDrawer.bind(this);
   }
   placeOrder(order) {
     let cart = [ ...this.state.cart ];
@@ -83,10 +85,13 @@ export default class App extends React.Component {
   closeSnackbar() {
     this.setState({ openSnackBar: false });
   }
+  toggleDrawer(open) {
+    this.setState({ openDrawer: open });
+  }
   render() {
     let render = null;
     if (this.state.view === [] || this.state.view.name === 'catalog') {
-      render = <ProductList view={this.state.view} setView={this.setView} products={this.state.products}/>;
+      render = <ProductList view={this.state.view} setView={this.setView} products={this.state.products} cart={this.addToCart} />;
     } else if (this.state.view.name === 'detail') {
       render = <ProductDetails view={this.state.view} setView={this.setView} id={this.state.view.params.id} cart={this.addToCart} open={this.state.openSnackBar} close={this.closeSnackbar}/>;
     } else if (this.state.view.name === 'cart') {
@@ -96,7 +101,7 @@ export default class App extends React.Component {
     }
     return (
       <React.Fragment>
-        <Header cartItem={this.getCartItem} cart={this.state.cart} click={this.setView}/>
+        <Header openDrawer={this.state.openDrawer} cartItem={this.getCartItem} cart={this.state.cart} click={this.setView} toggleDrawer={this.toggleDrawer}/>
         {render}
       </React.Fragment>
     );

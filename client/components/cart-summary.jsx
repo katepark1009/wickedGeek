@@ -20,14 +20,17 @@ export default function CartSummary(props) {
   return (
     <div className="cartsummarty__container mb-3">
       <div className="back btn btn-outline-secondary ml-3" onClick={() => props.setView('catalog', {})}><i className="far fa-arrow-alt-circle-left"></i> Back to catalog</div>
-      <div className="cartsummarty__title mt-4 pl-8"><h3 className="offset-sm-1">My Cart</h3></div>
+      <div className="cartsummarty__title mt-4 pl-8"><h3 className="ml-5">My Cart</h3></div>
+      <div className="cartsummarty__total pl-8"><h4 className="ml-5">Item Total : {sum ? sum.toFixed(2) : '$0.00'}</h4></div>
       <div className="cartsummarty__detail">
         {cartItems}
       </div>
       <div className="row">
-        <div className="cartsummarty__total mt-4 pl-8 col-8"><h4 className="offset-sm-1">Item Total : {sum ? sum.toFixed(2) : '$0.00'}</h4></div>
-        {cartItems ? <div className="btn btn-outline-secondary ml-3 col-2" onClick={() => {props.setView('checkout', {}); props.close(); }}>Checkout</div> //!여기 클릭핸들러...
-          : <h3 className="cart__empty text-muted"> Your cart is empty! </h3> }
+        {cartItems ? <div className="checkout__btn btn btn-outline-secondary ml-5 col-3 offset-3" onClick={() => { props.setView('checkout', {}); props.close(); }}>Checkout</div>
+          : <div className="col-6 ml-5">
+            <img className="shopping__bag ml-5" src="https://capecodbeer.com/wp-content/uploads/2017/04/Shopping-Bags.png" alt="shoppingBag" />
+            <h3 className="cart__empty ml-6 mt-5 text-muted"> Your cart is empty! </h3>
+          </div> }
       </div>
     </div>
   );

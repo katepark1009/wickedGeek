@@ -1,0 +1,19 @@
+[
+    {
+      "id": 3,
+      "name": "LEGO Stranger Things",
+      "price": 19900,
+      "image": [
+            {
+              "1":"https://bit.ly/2ExZXG"
+            },
+            {
+              "2":"https://bit.ly/30HCGeS"
+            }, 
+            {
+              "3":"https://bit.ly/2W1eyp9"
+            }
+        ],
+      "shortDescription": "The 2,200+-piece set is designed to flip on a couple of tree tops between the world and The Upside Down."
+    }
+]
