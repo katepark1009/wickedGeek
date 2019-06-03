@@ -7,18 +7,25 @@
   };
   $query='';
   if(empty($_GET['id'])) {
-    // $whereClause = '';
-    $query = "SELECT p.* , i.`url` FROM `products_list` AS p JOIN `images` as i ON p.`id` = i.`products_id` ORDER BY p.`id`";
+    $query = "SELECT p.* , JSON_ARRAYAGG( i.`url`) as images FROM `products_list` AS p JOIN `images` as i ON p.`id` = i.`products_id` GROUP BY p.`id`, p.`name`, p.`price`, p.`shortDescription`, p.`longDescription` ORDER BY p.`id`
+    ";
   } else {
     $id = $_GET['id'];
     if(is_numeric($id)){
-      // $whereClause = "WHERE id={$id}";
-      $query = "SELECT * FROM products_list WHERE id={$id}";
+    $query = "SELECT p.* , JSON_ARRAYAGG( i.`url`) as images FROM `products_list` AS p JOIN `images` as i ON p.`id` = i.`products_id` GROUP BY p.`id`, p.`name`, p.`price`, p.`shortDescription`, p.`longDescription` HAVING id={$id}";
+      $result = mysqli_query($conn, $query);
+      $row = mysqli_fetch_assoc($result);
+      $images = json_decode($row['images']);
+      $images[] = $row['image'];
+      $row['images'] = $images;
+      unset ($row['image']);
+      $json_output = json_encode($row, JSON_INVALID_UTF8_SUBSTITUTE);
+      print ($json_output);
+      exit();
     } else {
       throw new Exception("Errormessage: 'id' needs to be a number");
     };
   };
-  // $query = "SELECT * FROM products_list " . $whereClause;
   $result = mysqli_query($conn, $query);
   
   if (!$result) {
@@ -33,21 +40,16 @@
   };
 
   $output = [];
-
   while ($row = mysqli_fetch_assoc($result)) {
-    $thisData = array($row['image']);
-    unset($row['id'], $row['name'], $row['price'], $row['shortDescription']);
-
-    if(empty($output[$row['id']])) {
-      $row['image'] = [];
-      $row['image'][] = $thisData;
-      $output[$row['id']] = $row; 
-    } else {
-      $output[$row['id']]['image'][] = $thisData;
-    }
+    if(!$row['images']) {
+      $row['images']=[];
+    };
+    $images = json_decode($row['images']);
+    $images[] = $row['image'];
+    $row['images'] = $images;
+    unset ($row['image']);
+    $output[]=$row;
   };
-
   $json_output = json_encode($output, JSON_INVALID_UTF8_SUBSTITUTE);
-  $b = html_entity_decode($json_output);
-  print ($b);
+  print ($json_output);
 ?>

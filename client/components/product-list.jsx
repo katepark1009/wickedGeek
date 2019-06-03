@@ -15,15 +15,18 @@ const styles = theme => ({
 
 function ProductList(props) {
   const { classes } = props;
-  const cards = props.products.map(product => {
+  let cards = [];
+  cards = props.products.map(product => {
     return <ProductListItem key={product.id}
       id = {product.id}
       name = {product.name}
       price = {product.price}
-      image = {product.image}
+      image = {product.images[2]}
       description = {product.shortDescription}
       setView ={props.setView}
       addToCart = {props.cart}
+      image_detail = {product.images[0]}
+      image_detail2 = {product.images[1]}
     />;
   });
   return (

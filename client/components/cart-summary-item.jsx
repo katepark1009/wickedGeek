@@ -22,14 +22,14 @@ const style = {
     width: 151
   },
   media: {
-    width: 150
+    width: 200
   }
 };
 
 function CartSummaryItem(props) {
   return (
     <Card style={style.card}>
-      <CardMedia style={style.media} image={props.image} alt={props.name} title={props.name}/>
+      <CardMedia style={style.media} image={props.image[2]} alt={props.name} title={props.name}/>
       <div className={style.details}>
         <CardContent style={style.content}>
           <h3 className="cart__summary__name card-title">{props.name}</h3>

@@ -12,7 +12,7 @@ export default function CartSummary(props) {
         key = {item.id}
         name = {item.name}
         price = {parseInt(item.price)}
-        image = {item.image}
+        image = {item.images}
         description = {item.shortDescription}
       />;
     });

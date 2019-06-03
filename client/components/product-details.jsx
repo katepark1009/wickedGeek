@@ -4,6 +4,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import green from '@material-ui/core/colors/green';
+// import ResponsiveDialog from './modal';
 
 const styles = theme => ({
   close: {
@@ -14,6 +15,16 @@ const styles = theme => ({
   },
   success: {
     backgroundColor: green[600]
+  },
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden'
+  },
+  gridList: {
+    width: 100,
+    height: 100
   }
 });
 
@@ -44,15 +55,18 @@ class ProductDetails extends React.Component {
     let product;
     if (this.state.product) {
       product = this.state.product;
-      product = product[0];
     }
     return (
       <div className="product__detail__container mt-3">
         <div className="back btn btn-outline-secondary ml-3" onClick={() => { this.props.setView('catalog', {}); this.props.close(); } }><i className="far fa-arrow-alt-circle-left"></i> Back to catalog</div>
         <div className="product__detail__card row mt-3 px-3">
           <div className="product__detail__image__container col-sm-4">
-            <img className="product__detail__image card-img-top" src={this.state.product ? product.image : ''} alt={this.state.product ? product.name : ''}/>
-            <i className="fas fa-search-plus search__icon"></i>
+            <img className="product__detail__image card-img-top" src={this.state.product ? product.images[2] : ''} alt={this.state.product ? product.name : ''}/>
+            <div className="product__detail__preview__container">
+              <img className="product__detail__preview" src={this.state.product ? this.state.product.images[2] : ''} alt={this.state.product ? this.state.product.name : ''} />
+              <img className="product__detail__preview" src={this.state.product ? this.state.product.images[1] : ''} alt={this.state.product ? this.state.product.name : ''} />
+              <img className="product__detail__preview" src={this.state.product ? this.state.product.images[0] : ''} alt={this.state.product ? this.state.product.name : ''} />
+            </div>
           </div>
           <div className="product__detail__info col-sm-8 py-5">
             <div className="product__detail__title"><h2>{this.state.product ? product.name : ''}</h2></div>
@@ -61,7 +75,7 @@ class ProductDetails extends React.Component {
             <button className="product__detail__btn btn btn-warning" onClick={() => this.props.cart(product)}><i className="far fa-plus-square"></i> Add to Cart</button>
           </div>
         </div>
-        <div className="product__detail__all__info card bg-light mx-3 mt-3 px-3 py-3">{this.state.product ? product.shortDescription : ''}</div>
+        <div className="product__detail__all__info card bg-light mx-3 mt-3 px-3 py-3">{this.state.product ? product.longDescription : ''}</div>
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
@@ -86,6 +100,7 @@ class ProductDetails extends React.Component {
             </IconButton>
           ]}
         />
+        {/* <ResponsiveDialog /> */}
       </div>
     );
   }

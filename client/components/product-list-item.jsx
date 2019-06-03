@@ -37,17 +37,6 @@ class ProductListItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.handleClick = this.handleClick.bind(this);
-  }
-  handleClick(e) {
-    console.log(e);
-    // let productId = e.currentTarget.parentNode.parentNode.getAttribute('dataid');
-    // console.log(productId);
-    // fetch(`/api/products.php?id=${productId}`, {
-    //   method: 'GET'
-    // })
-    //   .then(response => response.json())
-    //   .then(json => this.props.addToCart(json));
   }
   render() {
     const { classes } = this.props;
@@ -64,7 +53,7 @@ class ProductListItem extends React.Component {
                   <p className="product__description card-text">{this.props.description}</p>
                 </CardContent>
               </CardActionArea>
-              <IconButton aria-label="Add to favorites" className={`${classes.button} ${this.props.name}`} onClick={this.handleClick} dataid={this.props.id}>
+              <IconButton aria-label="Add to favorites" className={`${classes.button} ${this.props.name}`} dataid={this.props.id}>
                 <AddShoppingCartIcon color="primary" dataid={this.props.id}/>
               </IconButton>
               <Button size="medium" color="primary">More Detail</Button>
