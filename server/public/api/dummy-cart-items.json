@@ -1,16 +1,10 @@
 [
   {
-    "id": 3,
-    "name": "Snuggie",
-    "price": 2900,
-    "image": "https://bit.ly/2LVHYAk",
-    "shortDescription": "Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!"
-  },
-  {
     "id": 5,
     "name": "Ostrich Pillow",
     "price": 9900,
-    "image": "https://bit.ly/2VD80b8",
-    "shortDescription": "Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow."
+    "images": ["https://bit.ly/2K2cR3h", "https://bit.ly/2wgpY92", "https://bit.ly/2VD80b8"],
+    "shortDescription": "Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow.",
+    "longDescription": "With a durable covering that encompasses the entire head and neck, the Ostrich Pillow makes it possible to nap anywhere! Catch a quick nap against a bus window, the metal rails of a subway seat, the bark of a tree, on the desk at work, or even the back of a park bench."
   }
 ]
